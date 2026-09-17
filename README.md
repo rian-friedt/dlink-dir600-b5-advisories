@@ -5,9 +5,8 @@ All findings were reproduced **only on an owned device** in an isolated laborato
 network and are disclosed following the principles of **coordinated disclosure**.
 
 > **Status: CVE IDs pending.** CVE IDs were requested from MITRE (CNA of Last
-> Resort) on **2026-09-15**. This repository is currently **private** and will be
-> published once coordination allows. CVE identifiers will be added to the
-> advisories as soon as they are assigned.
+> Resort) on **2026-09-15**. CVE identifiers will be added to the advisories
+> as soon as they are assigned.
 
 ## Projects (one folder per finding)
 
