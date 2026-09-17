@@ -1,7 +1,7 @@
 # RC-0002 — bounded validator
 
 `safe_validate_rc0002.py` is the restoration-first validator used to verify
-[RC-0002](../../advisories/RC-0002-unauth-persistent-language-pack-xss.md) on
+[RC-0002](README.md) on
 an owned D-Link DIR-600 B5.
 
 ## What it does

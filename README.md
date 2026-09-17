@@ -9,15 +9,18 @@ network and are disclosed following the principles of **coordinated disclosure**
 > published once coordination allows. CVE identifiers will be added to the
 > advisories as soon as they are assigned.
 
-## Advisories
+## Projects (one folder per finding)
 
-| ID | Title | CWE class | Affects latest firmware (2.18b01) | CVE |
-|---|---|---|---|---|
-| RC-0001 | Session fixation via CRLF header injection in `session.cgi` (REPORT) | CWE-113 → CWE-384 | Yes (statically verified) | pending |
-| RC-0002 | Unauthenticated persistent cross-site scripting via language-pack upload | CWE-79 (CWE-345) | Yes (statically verified) | pending |
-| RC-0003 | NEAP daemon (`neaps`, UDP/64512) HMAC verification fails open | CWE-347 → CWE-306 | Yes (binary byte-identical) | pending |
-| RC-0005 | Unauthenticated traffic-statistics reset (`st_stats.php`) | CWE-306, CWE-471 | Yes | pending |
-| RC-0006 | One-byte heap out-of-bounds read in LLMNR responder (`llmnresp`) | CWE-125 | Yes (binary byte-identical) | pending |
+Each folder is self-contained: `README.md` = the advisory, `POC.md` (and code)
+= the bounded proof-of-concept material.
+
+| Project | Finding | CWE class | Affects latest firmware (2.18b01) | CVE | PoC |
+|---|---|---|---|---|---|
+| [`RC-0001-session-fixation`](RC-0001-session-fixation/) | Session fixation via CRLF header injection in `session.cgi` (REPORT) | CWE-113 → CWE-384 | Yes (statically verified) | pending | [`POC.md`](RC-0001-session-fixation/POC.md) — documented chain |
+| [`RC-0002-language-pack-xss`](RC-0002-language-pack-xss/) | Unauthenticated persistent XSS via language-pack upload | CWE-79 (CWE-345) | Yes (statically verified) | pending | [`safe_validate_rc0002.py`](RC-0002-language-pack-xss/safe_validate_rc0002.py) — inert validator |
+| [`RC-0003-neap-hmac-fail-open`](RC-0003-neap-hmac-fail-open/) | NEAP daemon (`neaps`, UDP/64512) HMAC verification fails open | CWE-347 → CWE-306 | Yes (binary byte-identical) | pending | [`POC.md`](RC-0003-neap-hmac-fail-open/POC.md) — captured exchange |
+| [`RC-0005-stats-reset`](RC-0005-stats-reset/) | Unauthenticated traffic-statistics reset (`st_stats.php`) | CWE-306, CWE-471 | Yes | pending | [`POC.md`](RC-0005-stats-reset/POC.md) — documented request |
+| [`RC-0006-llmnr-oob-read`](RC-0006-llmnr-oob-read/) | One-byte heap OOB read in LLMNR responder (`llmnresp`) | CWE-125 | Yes (binary byte-identical) | pending | [`POC.md`](RC-0006-llmnr-oob-read/POC.md) + ASAN harness |
 
 ## Affected product
 
@@ -44,12 +47,11 @@ This repository will be updated as the process advances.
 
 ## Publication policy
 
-- PoC material in [`poc/`](poc/) is **deliberately bounded**: it demonstrates
-  the issues on an authorized device without providing a weaponized toolchain.
-  Exploit primitive details are documented in the advisories.
+- PoC material is **deliberately bounded**: it demonstrates the issues on an
+  authorized device without providing a weaponized toolchain.
 - Two additional findings (NEAP heap-write candidate, UPnP `NewRemoteHost`
-  rule omission) are **withheld**: they are pending runtime validation and are
-  not part of this publication set.
+  rule omission) are **withheld entirely**: they are pending runtime
+  validation and are not part of this publication set.
 
 ## Responsible use
 
